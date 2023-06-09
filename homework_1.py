@@ -103,5 +103,4 @@ def parse_folder(root, ipath):
 #############################################################
 
 parse_folder("C:/Downloads", "")
-# C:/Users/APodoba/Downloads/[Categories]
 

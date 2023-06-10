@@ -3,6 +3,7 @@
 import re
 import os
 import shutil
+import sys
 
 from pathlib import Path
 
@@ -84,12 +85,14 @@ def parse_folder(root, ipath):
 
     for i, dirName in enumerate(folders):
         if parse_folder(root, absPath + dirName) == True:
+            # remove sub-directory if empty is OK
             rmDir = Path(absPath + dirName)
             rmDir.rmdir()
 
     empties = True
     for iter in path.iterdir():
         if iter.is_file() or iter.is_dir():
+            # return empty-flag to allow to delete
             empties = False
             break
 
@@ -97,5 +100,17 @@ def parse_folder(root, ipath):
 
 #############################################################
 
-parse_folder("C:/Downloads", "")
+def main():
+    try:
+        path = Path(sys.argv[1])
+    except IndexError:
+        return "No path to folder"
+    
+    if not path.exists():
+        return f"Folder with path {path} dos`n exists."
+    
+    parse_folder(path)
+    return "All ok"
 
+if __name__ == "__main__":
+    print(main())

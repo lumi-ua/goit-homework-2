@@ -41,7 +41,7 @@ def normalize(name):
     rename = re.sub(r'[^a-zA-Z0-9 -]', "_", rename)
     return rename
 ###########################################################
-def parse_folder(root, ipath):
+def parse_folder(root, ipath = ""):
 
     if not Path(root).exists(): return False
 

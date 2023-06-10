@@ -79,8 +79,7 @@ def parse_folder(root, ipath = ""):
 
                     if cat == "archives":
                         shutil.unpack_archive(targetFile.absolute(), root + "/" + cat + "/" + newName)
-
-    return
+                        
     #*********************************
 
     for i, dirName in enumerate(folders):

@@ -109,7 +109,7 @@ def main():
     if not path.exists():
         return f"Folder with path {path} dos`n exists."
     
-    parse_folder(path)
+    parse_folder(sys.argv[1])
     return "All ok"
 
 if __name__ == "__main__":

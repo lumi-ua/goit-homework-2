@@ -62,26 +62,27 @@ def parse_folder(root, ipath = ""):
         elif i.is_file():
             pathFile = Path(absPath + i.name)
             cat, success = getCategory(pathFile)  #(string, Bool)
-            if success:
-                newName = normalize(pathFile.stem)
+            # if success:
+            # for any category:
+            newName = normalize(pathFile.stem)
 
-                # prepare target folder for category
-                targetDir = Path(root + "/" + cat)
-                #print(targetDir.absolute())
-                if not targetDir.exists():
-                    targetDir.mkdir()
-                
-                #print(newName)
+            # prepare target folder for category
+            targetDir = Path(root + "/" + cat)
+            #print(targetDir.absolute())
+            if not targetDir.exists():
+                targetDir.mkdir()
 
-                targetFile = Path(root + "/" + cat + "/" + newName + pathFile.suffix)
-                if not targetFile.exists():
-                    pathFile.replace(targetFile)
-                else:
-                    targetFile = targetFile.with_name(f"{targetFile.stem}-{uuid.uuid4()}{targetFile.suffix}")
-                    pathFile.replace(targetFile)
+            #print(newName)
 
-                if cat == "archives":
-                    shutil.unpack_archive(targetFile.absolute(), root + "/" + cat + "/" + targetFile.stem)
+            targetFile = Path(root + "/" + cat + "/" + newName + pathFile.suffix)
+            if not targetFile.exists():
+                pathFile.replace(targetFile)
+            else:
+                targetFile = targetFile.with_name(f"{targetFile.stem}-{uuid.uuid4()}{targetFile.suffix}")
+                pathFile.replace(targetFile)
+
+            if cat == "archives":
+                shutil.unpack_archive(targetFile.absolute(), root + "/" + cat + "/" + targetFile.stem)
                         
     #*********************************
 

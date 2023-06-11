@@ -4,7 +4,7 @@ import re
 import os
 import shutil
 import sys
-
+import uuid
 from pathlib import Path
 
 
@@ -76,9 +76,12 @@ def parse_folder(root, ipath = ""):
                 targetFile = Path(root + "/" + cat + "/" + newName + pathFile.suffix)
                 if not targetFile.exists():
                     pathFile.replace(targetFile)
+                else:
+                    targetFile = targetFile.with_name(f"{targetFile.stem}-{uuid.uuid4()}{targetFile.suffix}")
+                    pathFile.replace(targetFile)
 
-                    if cat == "archives":
-                        shutil.unpack_archive(targetFile.absolute(), root + "/" + cat + "/" + newName)
+                if cat == "archives":
+                    shutil.unpack_archive(targetFile.absolute(), root + "/" + cat + "/" + targetFile.stem)
                         
     #*********************************
 

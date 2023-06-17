@@ -11,7 +11,7 @@ from pathlib import Path
 ##########################################################
 img_f = {'.jpeg', '.png', '.jpg', '.svg', ".bmp"}
 mov_f = {'.avi', '.mp4', '.mov', '.mkv', ".webm", ".wmv", ".flv"}
-doc_f = {'.doc', '.docx', '.txt', '.pdf', '.xlsx', '.pptx', ".ini", ".cmd", ".ppt", ".xml", ".msg", ".cpp", ".hpp"}
+doc_f = {'.doc', '.docx', '.txt', '.pdf', '.xlsx', '.pptx', ".ini", ".cmd", ".ppt", ".xml", ".msg", ".cpp", ".hpp", ".py"}
 mus_f = {'.mp3', '.ogg', '.wav', '.amr', ".aiff"}
 arch_f = {'.zip', '.tar'}
 

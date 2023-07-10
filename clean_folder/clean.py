@@ -103,6 +103,7 @@ def parse_folder(root, ipath = ""):
 
 def printStatistic(rootStr):
     global CATEGORIES
+    cat_amount = dict()
 
     # try to traverse each directory-category:
     for cat, exts in CATEGORIES.items():
@@ -115,6 +116,8 @@ def printStatistic(rootStr):
             for item in dirCat.iterdir():
                 if(item.is_file()):
                     print("[{}]: {}".format(cat, item.name))
+                    cat_amount[cat] = cat_amount.get(cat, 0) + 1
+
                     if item.suffix in CATEGORIES[cat]:
                         ext.add(item.suffix)
                     else:
@@ -125,6 +128,8 @@ def printStatistic(rootStr):
                 print("[*{}*].extentions:".format(cat), ext)
             else:                           # [others] category
                 print("[*{}*].extentions:".format(cat), uext)
+
+    print("----------------------\n", cat_amount)
     return
 ###############################################################
 def main():

@@ -103,7 +103,7 @@ def parse_folder(root, ipath = ""):
 
 def printStatistic(rootStr):
     global CATEGORIES
-    cat_amount = dict()
+    cat_amount = dict() # cat_amount[category] = files-count
 
     # try to traverse each directory-category:
     for cat, exts in CATEGORIES.items():
